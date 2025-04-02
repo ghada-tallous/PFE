@@ -1,0 +1,25 @@
+meta {
+  name: update Publication
+  type: http
+  seq: 10
+}
+
+put {
+  url: http://localhost:8080/api/v1/user/publications/23
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnaGFkYS50YWxsb3VzQHNvZnJlY29tLmNvbSIsImlhdCI6MTc0MjkwMzI4MSwiZXhwIjoxNzQyOTM5MjgxfQ.GKXDR2I7CVNtT5pFYlCrQut0SSKN9j5h2uG0lX0ErGE
+}
+
+body:multipart-form {
+  titre: "un bon plan"
+  contenu: "contenu"
+  lien: "un lien"
+  localisation: "une localisation"
+  categorieId: 10
+  files: @file(D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-1.jpg|D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-5.jpg)
+  files: @file()
+}

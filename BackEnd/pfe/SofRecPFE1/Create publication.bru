@@ -1,0 +1,25 @@
+meta {
+  name: Create publication
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8080/api/v1/user/publications/with-media
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnaGFkYS50YWxsb3VzQHNvZnJlY29tLmNvbSIsImlhdCI6MTc0MjkwMjg0MywiZXhwIjoxNzQyOTM4ODQzfQ.aV2Wy4j8NrZuVzzcmHp7pihGkGkI7YLWg7HhhOLffQs
+}
+
+body:multipart-form {
+  titre: "titre"
+  contenu: "contenu"
+  lien: "lien"
+  localisation: "localisation"
+  categorieId: 8
+  files: @file(D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-1.jpg|D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-5.jpg)
+  files: @file(D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-3.jpg|D:\GhadaTallous\argon-social-master\argon-social-master\assets\images\users\user-4.jpg)
+}

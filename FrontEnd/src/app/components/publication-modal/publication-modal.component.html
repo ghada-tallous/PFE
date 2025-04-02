@@ -1,0 +1,88 @@
+<div class="modal fade" id="publicationModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="publicationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <!-- <h5 class="modal-title" id="publicationModalLabel">Créer une
+                publication</h5> -->
+                <h5 class="modal-title" id="publicationModalLabel">{{ isEditMode ? 'Modifier la publication' : 'Créer une publication' }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <!-- <h5>{{ isEditMode ? 'Modifier la publication' : 'Créer une publication' }}</h5> -->
+                    <div class="row mb-2">
+                        <div class="col-2 ">
+                            <label for="categories">Catégorie :</label>
+                        </div>
+                        <div class="col-10">
+                            <select 
+                            class="form-select" 
+                            name="categories" 
+                            aria-label="Choisissez une catégorie"
+                            [(ngModel)]="publication.categorieId" 
+                            (change)="onSelectCategorie($event)"
+                            required>
+                                <option hidden [value]="undefined" disabled selected>Choisissez une catégorie</option>
+                                <option *ngFor="let categorie of categories" [value]="categorie.id">
+                                    {{ categorie.nom }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <form (ngSubmit)="onSubmit()" #publicationForm="ngForm">
+                        <div class="row mb-0">
+                            <div class="col-1 user-input">
+                                <img src="assets/images/users/user-1.jpg" alt="User Image" class="user-img">
+                            </div>
+                            <div class="col-11">
+                                <input type="text" id="titre" [(ngModel)]="publication.titre" name="titre"
+                                    placeholder="Nom du produit, restaurant, service..." required
+                                    class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <textarea id="contenu" [(ngModel)]="publication.contenu" name="contenu"
+                                    placeholder="Que voulez-vous dire ?" required
+                                    class="form-control contenu"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <input type="file" id="media" (change)="onFileSelected($event)" multiple
+                                    accept="image/*,video/*" style="display: none;" />
+                                <label for="media" class="btn btn-light" id="mediaLabel">Photos/vidéos</label>
+                            </div>
+                            <div class="col-3">
+                                <span (click)="toggleLocationInput()" class="btn btn-light"><i
+                                        class="fas fa-map-marker-alt"></i> Je suis là</span>
+                                <div *ngIf="isLocationVisible">
+                                    <input type="text" [(ngModel)]="publication.localisation" name="localisation"
+                                        class="form-control" placeholder="Entrez une localisation" />
+                                </div>
+                            </div>
+                            <div class="col-3 ">
+                                <span (click)="toggleLinkInput()" class="btn btn-light"><i class="fas fa-link"></i>
+                                    Lien</span>
+                                <div *ngIf="isLinkVisible">
+                                    <input type="url" [(ngModel)]="publication.lien" name="lien" class="form-control"
+                                        placeholder="Entrez un lien" />
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" [disabled]="!publication.titre || !publication.contenu"
+                                    class="btn btn-light">
+                                    {{ isEditMode ? 'Mettre à jour' : 'Publier' }}
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

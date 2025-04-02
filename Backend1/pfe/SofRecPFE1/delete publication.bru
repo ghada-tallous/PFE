@@ -1,0 +1,15 @@
+meta {
+  name: delete publication
+  type: http
+  seq: 11
+}
+
+delete {
+  url: http://localhost:8080/api/v1/user/publications/23
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnaGFkYS50YWxsb3VzQHNvZnJlY29tLmNvbSIsImlhdCI6MTc0MjkzMzg1MSwiZXhwIjoxNzQyOTY5ODUxfQ.wyu6pzUBTvZSzi--T5c0Sg-mQxpov_91ovuLz4KEDE8
+}
