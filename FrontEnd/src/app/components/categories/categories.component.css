@@ -1,0 +1,348 @@
+
+/* @import "../../../../src/assets/css/boxicons.min.css";  */
+@import "../../../../src/assets/css/bootstrap/bootstrap.min.css";
+@import "../../../../src/assets/css/style.css";
+@import "../../../../src/assets/css/components.css";
+@import "../../../../src/assets/css/media.css";
+@import "../../../../src/assets/css/chat.css"; 
+@import "https://vjs.zencdn.net/7.4.1/video-js.css";
+    
+
+.test {
+    display: flex;
+    flex-direction: row;
+    flex: 1, 2, 1;
+}
+.post-content {
+    width: 100%; /* Full width of the container */
+    max-width: 700px; /* Set a maximum width for larger screens */
+    height: 500px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures media fills the space without distortion */
+    display: block; /* Ensures proper block-level rendering */
+    margin: 0 auto; /* Centers the media horizontally */
+  }
+  /* Ensure carousel container respects the media size */
+.carousel-inner {
+  width: 100%;
+  max-width: 700px; /* Match the max-width of media */
+  height: 500px; /* Match the height of media */
+  overflow: hidden; /* Prevents overflow of larger media */
+}
+
+/* Optional: Adjust carousel controls positioning */
+.carousel-control-prev,
+.carousel-control-next {
+  height: 400px; /* Align with media height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .post-content {
+    max-width: 100%; /* Full width on smaller screens */
+    height: 300px; /* Smaller height for mobile */
+  }
+
+  .carousel-inner {
+    max-width: 100%;
+    height: 300px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    height: 300px;
+  }
+}
+.publication-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-edit {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-visit-site {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-visit-site:hover {
+    background-color: #0056b3;
+}
+
+
+.accueil-content {
+    display: flex;
+    /* Active Flexbox */
+    flex-direction: row;
+    /* Dispose les sections en ligne */
+    justify-content: center;
+    /* Centre les éléments horizontalement */
+    align-items: flex-start;
+    /* Aligne les éléments en haut */
+    gap: 20px;
+    /* Ajoute un espacement entre les sections */
+    width: 100%;
+    /* Prend toute la largeur disponible */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Définir la répartition des sections */
+.chatbot-section {
+    flex: 1;
+    /* Occupe 1 portion */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-container {
+    flex: 2;
+    /* Occupe 2 portions (le double des autres) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.notifications-container {
+    flex: 1;
+    /* Occupe 1 portion */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Section de publication */
+.post-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header de la publication */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+.post-input:focus {
+    border-color: #007bff;
+}
+
+.post-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: rgba(42, 85, 130, 1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.post-button:hover {
+    background-color: #0056b3;
+}
+
+/* Liste des publications */
+.publications-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.publication-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.no-publications-message {
+    text-align: center;
+    color: #666;
+}
+
+/* MODAL PUBLICATION */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 900px;
+    max-width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal:hover {
+    color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .accueil-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chatbot-section {
+        margin-bottom: 20px;
+    }
+
+    .post-container {
+        width: 100%;
+    }
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+  }
+  
+  .modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+  background-color: #2a5582a7; /* Nouvelle couleur personnalisée */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+  
+  .modal-body {
+    padding: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .modal-footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 15px;
+  }
+  
+  .btn-danger {
+    background-color: #2A5582;
+    border-color: #2A5582;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-danger:hover {
+    background-color: #2A5582;
+    border-color: #2A5582;
+  }
+  
+  .btn-secondary {
+    margin-right: 10px;
+  }

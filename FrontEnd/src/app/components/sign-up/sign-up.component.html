@@ -1,0 +1,90 @@
+<div class="row ht-100v flex-row-reverse no-gutters">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="signup-form">
+                <div class="auth-logo text-center mb-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="assets/images/logo.png" class="logo-img" alt="Logo">
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="pt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" formControlName="firstName" placeholder="Prénom">
+                                <label for="floatingInput">Prénom</label>
+                                <div *ngIf="signupForm.controls['firstName'].invalid && signupForm.controls['firstName'].touched">
+                                    First name is required.
+                                  </div>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" formControlName="lastName" placeholder="Nom">
+                                <label for="floatingInput">Nom</label>
+                                <div *ngIf="signupForm.controls['lastName'].invalid && signupForm.controls['lastName'].touched">
+                                    Last name is required.
+                                  </div>
+                              </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="name@sofrecom.com">
+                                <label for="floatingInput">Adresse Email</label>
+                                <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+                                    Please enter a valid email.
+                                  </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Mot de passe">
+                                <label for="floatingPassword">Mot de passe</label>
+                                <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+                                    Password is required.
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingConfirmPassword" formControlName="confirmPassword" placeholder="Confirmer Mot de passe">
+                                <label for="floatingConfirmPassword">Confirmer Mot de passe</label>
+                                <div *ngIf="signupForm.errors?.['passwordMismatch'] && signupForm.get('confirmPassword')?.touched">
+                                    <small class="text-danger">Les mots de passe ne correspondent pas.</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 text-center mb-3">
+                            <span class="go-login">Déjà membre? <a routerLink="/login">Connectez-vous</a></span>
+                        </div>
+                        <br/>
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary sign-up">S'inscrire</button>
+                            </div>
+                        </div>
+                        <div *ngIf="errorMsg">{{ errorMsg }}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 auth-bg-image d-flex justify-content-center align-items-center">
+            <div class="auth-left-content mt-5 mb-5 text-center">
+                <div class="text-white mt-5 mb-5">
+                    <h2 class="create-account mb-3" style="color: #2A5582;">BIENVENUE</h2>
+                    <p style="color: #2A5582;">Partageons nos découvertes, enrichissons notre expérience !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core -->
+    <!-- <script src="assets/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper/popper.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script> -->
+    <!-- Optional -->
+    <!-- <script src="assets/js/app.js"></script> -->
+

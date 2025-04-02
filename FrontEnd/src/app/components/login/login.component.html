@@ -1,0 +1,109 @@
+<div class="row ht-100v flex-row-reverse no-gutters">
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="signup-form">
+            <div class="auth-logo text-center mb-5">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="assets/images/logo.png" class="logo-img" alt="Logo">
+                    </div>
+                    <!-- <div class="col-md-10">
+                            <p>Argon Social Network</p>
+                            <span>Design System</span>
+                        </div> -->
+                </div>
+            </div>
+            <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" formControlName="email"
+                        placeholder="name@sofrecom.com">
+                    <label for="floatingInput">Adresse Email</label>
+                    <div *ngIf="signinForm.controls['email'].invalid && signinForm.controls['email'].touched">
+                        Please enter a valid email.
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" formControlName="password"
+                        placeholder="Mot de passe">
+                    <label for="floatingPassword">Mot de passe</label>
+                    <div *ngIf="signinForm.controls['password'].invalid && signinForm.controls['password'].touched">
+                        Password is required.
+                    </div>
+                </div>
+
+                <br />
+                <!-- <form action="" method="">
+                    <div class="row"> -->
+                <!-- <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="" placeholder="Password">
+                            </div>
+                        </div> -->
+                <div class="col-md-12 mb-3 text-center">
+                    <a href="javascript:void(0)" (click)="openForgotPasswordModal()">Mot de passe oublié?</a>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button type="submit" [disabled]="signinForm.invalid" class="btn btn-primary sign-up ">Se
+                            connecter</button>
+                    </div>
+                </div>
+                <div *ngIf="errorMsg">{{ errorMsg }}</div>
+            </form>
+
+            <div class="col-md-12 text-center mt-5">
+                <span class="go-login">Vous n'avez pas de compte? <a routerLink="/sign-up">S'inscrire</a></span>
+            </div>
+            <!--  </div>
+                </form> -->
+        </div>
+    </div>
+    <div class="col-md-6 auth-bg-image d-flex justify-content-center align-items-center">
+        <div class="auth-left-content mt-5 mb-5 text-center">
+            <div class="text-white mt-5 mb-5">
+                <h2 class="create-account mb-3" style="color: #2A5582;">BIENVENUE</h2>
+                <p style="color: #2A5582;">Partageons nos découvertes, enrichissons notre expérience !</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modale pour mot de passe oublié -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #2A5582; color: white;">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">Réinitialiser le mot de passe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeForgotPasswordModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="forgotPasswordForm" (ngSubmit)="onForgotPasswordSubmit()">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="forgotPasswordEmail" formControlName="email" placeholder="name@sofrecom.com">
+              <label for="forgotPasswordEmail">Adresse Email</label>
+              <div *ngIf="forgotPasswordForm.controls['email'].invalid && forgotPasswordForm.controls['email'].touched">
+                Please enter a valid email.
+              </div>
+            </div>
+            <div *ngIf="forgotPasswordMessage" class="text-center mb-3" [ngClass]="{'text-success': forgotPasswordMessage.includes('envoyé'), 'text-danger': !forgotPasswordMessage.includes('envoyé')}">
+                {{ forgotPasswordMessage }}
+            </div>  
+            <div class="text-center mb-3 text-muted">
+                Vérifiez votre boîte de réception (et vos spams) pour le lien de réinitialisation.
+              </div>
+            <button type="submit" [disabled]="forgotPasswordForm.invalid" class="btn btn-primary w-100">Envoyer le lien</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Core -->
+<!--  <script src="assets/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper/popper.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>-->
+<!-- Optional -->
+<!-- <script src="assets/js/app.js"></script>  -->
